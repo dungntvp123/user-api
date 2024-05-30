@@ -7,9 +7,9 @@ import com.microservice.user.config.SystemConfig;
 import com.microservice.user.data.dto.request.*;
 import com.microservice.user.data.dto.response.LoadUserResponseDto;
 import com.microservice.user.data.entity.User;
-import com.microservice.user.repository.ActionLogRepository;
+//import com.microservice.user.repository.ActionLogRepository;
 import com.microservice.user.repository.UserRepository;
-import com.microservice.user.service.ActionLogService;
+//import com.microservice.user.service.ActionLogService;
 import com.microservice.user.service.UserService;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -31,12 +31,12 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    private ActionLogService actionLogService;
+//    @Autowired
+//    private ActionLogService actionLogService;
     @Override
     public ResponseBody<?> loadUser(String userId) {
         User user = userRepository.findById(userId).get();
-        actionLogService.logAction(userId, EventType.LOAD_DATA, "load data from user", "success");
+//        actionLogService.logAction(userId, EventType.LOAD_DATA, "load data from user", "success");
         return new ResponseBody<>(ResponseStatus.LOAD_USER_DETAIL_SUCCESSFUL, new LoadUserResponseDto().getDetail(user));
     }
 
